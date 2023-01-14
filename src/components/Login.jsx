@@ -78,8 +78,8 @@ window.location.reload()
                 <Input ref={Password} type="password" />
               </FormControl>
               <Select ref={Role} placeholder='Select option'>
-  <option value='Donour'>Donour</option>
-  <option value='needy'>Needy</option>
+  <option value='Donate'>Donate</option>
+  <option value='need'>need</option>
 </Select>
               <Stack spacing={10}>
                 <Stack

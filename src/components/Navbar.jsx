@@ -9,7 +9,7 @@ const navigate=useNavigate()
 useEffect(()=>{
   let {role,token}=JSON.parse(localStorage.getItem("informationaboutuser"))||{}
   console.log(role,token)
-  setRole(Role)
+  setRole(role)
   if(token){
     setAuthenticated(true)
   }else{
@@ -30,16 +30,12 @@ localStorage.removeItem("informationaboutuser")
 navigate("/login")
 window.location.reload()
 }
-  return (
-    <nav className='nav'>
-    <Link  to={"/"} className='site-title'> 
-    <img src="https://i.ibb.co/s14Mtn3/Khaan-2.jpg" alt="Khaan-2" border="0" width={"30%"}/>
-    </Link>
-    
-   <img src="https://www.oneindia.com/img/2016/01/14-1452767715-makeinindia-logo.jpg" width={"7%"} />
 
- {
-isauthenticated?(
+
+
+let component;
+if(isauthenticated&&Role=="Donate"){
+component=
 <>
 <ul>
 
@@ -63,57 +59,82 @@ Stats
 CreateSlot
 </CustomLink>
 
-
-
 <CustomLink to="/chat" display={"none"}>
 Chat
 </CustomLink>
 
-
-
- 
 </ul>
 
 </>
-
-):(
+}
+else if(isauthenticated&&Role=="need"){
+  component =
   <>
+  <ul>
+  
+  <CustomLink to="/user">
+  User Profile
+  </CustomLink>
+  
+  <CustomLink to="/logout" onClick={logout} >
+  Logout
+  </CustomLink>
+  
+  <CustomLink to="/alldonations">
+  All Donations 
+  </CustomLink>
+  
+  <CustomLink to="/stats">
+  Stats
+  </CustomLink>
+  
+  <CustomLink to="/chat" display={"none"}>
+  Chat
+  </CustomLink>
+  <CustomLink to="/findfood" display={"none"}>
+  Findfood
+  </CustomLink>
+  
+  </ul>
+</>
+}else{
+ component= <>
 
   <CustomLink to="/alldonations">
-All Donations 
-</CustomLink>
-
-<CustomLink to="/findfood" display={"none"}>
-Findfood
-</CustomLink>
-
-<CustomLink to="/stats">
-Stats
-</CustomLink>
-<CustomLink to="/login">
-Login
-</CustomLink>
-
-<CustomLink to="/donatefood">
-Donate Food
-</CustomLink>
-
-<CustomLink to="/wantfood">
-Want Food
-</CustomLink>
-
-  </>
-)
-
-
+  All Donations 
+  </CustomLink>
   
- }
+  <CustomLink to="/stats">
+  Stats
+  </CustomLink>
+  <CustomLink to="/login">
+  Login
+  </CustomLink>
+  
+  <CustomLink to="/donatefood">
+  Donate Food
+  </CustomLink>
+  
+  <CustomLink to="/wantfood">
+  Want Food
+  </CustomLink>
+  
+    </>
 
-   
- 
+}
 
 
-    </nav>
+  return (
+    <nav className='nav'>
+    <Link  to={"/"} className='site-title'> 
+    <img src="https://i.ibb.co/s14Mtn3/Khaan-2.jpg" alt="Khaan-2" border="0" width={"30%"}/>
+  </Link>
+    
+ <img src="https://www.oneindia.com/img/2016/01/14-1452767715-makeinindia-logo.jpg" width={"7%"} />
+ {component}
+
+
+</nav>
   )
 }
 

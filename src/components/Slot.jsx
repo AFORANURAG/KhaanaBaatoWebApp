@@ -11,13 +11,15 @@ import {
 } from '@chakra-ui/react';
 // import { BiLike,BiChat, BiShare, } from '@chakra-ui/icons'
 
+import { Badge } from '@chakra-ui/react'
 import { Image } from '@chakra-ui/react'
-export default function Slot({image,email,content,name,location}) {
+export default function Slot({image,email,content,name,location,status}) {
   return (
-    <Card>
-    <Center py={6}>
+    <Card  >
+    <Center py={6} mb={15}>
       <Box
         maxW={'445px'}
+       
         w={'full'}
         bg={useColorModeValue('white', 'gray.900')}
         boxShadow={'2xl'}
@@ -76,15 +78,11 @@ export default function Slot({image,email,content,name,location}) {
       },
     }}
   >
-    <Button flex='1' variant='ghost' >
-      Like
+  
+    <Button flex={1} colorScheme={"whatsapp"} >
+   Chat With Donour
     </Button>
-    <Button flex='1' variant='ghost' >
-      Comment
-    </Button>
-    <Button flex='1' variant='ghost' >
-      Share
-    </Button>
+   
   </CardFooter>
       </Box>
       

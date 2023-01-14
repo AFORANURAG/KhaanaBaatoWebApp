@@ -41,7 +41,7 @@ const [location,setlocation]=useState()
 const [url,setUrl]=useState("")
 const [quill,setQuill]=useState([])
 
-const editor =useCallback((element)=>{
+const editor = useCallback((element)=>{
 if(element==null) return 
 element.innerHTML=""
 const editing=document.createElement("div")
@@ -86,18 +86,12 @@ const submitdetail=()=>{
      } catch (error) {
       console.log(error)
      }
-     
-    }
+}
+useEffect(()=>{
+getLocation()
+},[])
 
-    useEffect(()=>{
-    getLocation()
-    },[])
-    
-    
-    
-    
-    
-    function sendSignupDetail (){
+function sendSignupDetail (){
  
 let value= JSON.parse(localStorage.getItem("informationaboutuser"))
 //  console.log(value) 
@@ -105,7 +99,7 @@ let value= JSON.parse(localStorage.getItem("informationaboutuser"))
 let refreshToken=value.refreshToken
 console.log(accessToken)
 console.log(location)
- let obj={location:location,image:url,content:quill?.getContents()?.ops[0]?.insert}
+ let obj={location:location,image:url,content:quill?.getContents()?.ops[0]?.insert,active:true}
     fetch("http://localhost:8080/donour/createslot",{
         method:"POST",
         headers:{

@@ -1,2 +1,8 @@
 // the goal for next 1 hour is to make a decent looking navbar with routes
 // step-1. Create a Navbar with (all donations,want food,donate,food)
+// only active slots are being shown in findfood section, we are going to find food nearest.
+// find food section is one of the most trickyyy part
+// as I am going to add search by distance search /
+// search by nearest distance
+// search statewise
+//
